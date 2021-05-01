@@ -37,10 +37,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:layout_margin="16dp"
+                    android:layout_margin="@dimen/margin_16"
                     android:text="@string/post"
                     android:textColor="@color/white"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/text_size_18"
                     android:textStyle="bold" />
 
                 <androidx.appcompat.widget.Toolbar
@@ -57,7 +57,7 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/recyclerView"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="@dimen/margin_24"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
