@@ -30,13 +30,10 @@ class CustomAlertDialog(
         positive.setOnClickListener {
             onDialogCallBack.onPositive()
             dismiss()
-            cancel()
-            this.dismiss()
         }
         negative.setOnClickListener {
             onDialogCallBack.onNegative()
-            this.dismiss()
-            this.hide()
+            dismiss()
         }
     }
 }

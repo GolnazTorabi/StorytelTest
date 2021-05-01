@@ -6,12 +6,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.golnaz.storyteltest.R
 import com.golnaz.storyteltest.databinding.CommentItemBinding
-import com.golnaz.storyteltest.post.data.response.CommentItem
+import com.golnaz.storyteltest.post.data.response.Comment
 import javax.inject.Inject
 
 class CommentAdapter @Inject constructor() :
     RecyclerView.Adapter<CommentAdapter.CommentViewHolder>() {
-    private var items: MutableList<CommentItem> = mutableListOf()
+    private var items: MutableList<Comment> = mutableListOf()
 
     private var layoutInflater: LayoutInflater? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentViewHolder {
@@ -27,7 +27,7 @@ class CommentAdapter @Inject constructor() :
         return CommentViewHolder(binding)
     }
 
-    fun fillData(items: MutableList<CommentItem>) {
+    fun fillData(items: MutableList<Comment>) {
         this.items.clear()
         this.items = items
         notifyDataSetChanged()
@@ -42,7 +42,7 @@ class CommentAdapter @Inject constructor() :
 
     inner class CommentViewHolder(val binding: CommentItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun fillData(comment: CommentItem) {
+        fun fillData(comment: Comment) {
             binding.comment = comment
         }
 

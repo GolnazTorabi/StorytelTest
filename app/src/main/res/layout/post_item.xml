@@ -5,11 +5,11 @@
 
         <variable
             name="post"
-            type="com.golnaz.storyteltest.post.data.response.PostItem" />
+            type="com.golnaz.storyteltest.post.data.response.Post" />
 
         <variable
             name="photo"
-            type="com.golnaz.storyteltest.post.data.response.PhotosItem" />
+            type="com.golnaz.storyteltest.post.data.response.Photo" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -17,7 +17,8 @@
         android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_margin="16dp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/image"
@@ -26,8 +27,8 @@
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="16dp"
-            app:placeHolder="@{@drawable/ic_launcher_background}"
-            app:imageUrl="@{photo.url}"
+            app:placeHolder="@{@drawable/ic_baseline_error_outline_24}"
+            app:imageUrl="@{photo.thumbnailUrl}"
             tools:background="@color/backgroundColor" />
 
         <LinearLayout

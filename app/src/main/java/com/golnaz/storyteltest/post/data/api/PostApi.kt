@@ -9,11 +9,11 @@ import retrofit2.http.Path
 
 interface PostApi {
     @GET("/posts")
-    fun gePost(): Single<Post>
+    fun gePost(): Single<List<Post>>
 
     @GET("/photos")
-    fun getPhoto(): Single<Photo>
+    fun getPhoto(): Single<List<Photo>>
 
     @GET("posts/{id}/comments")
-    fun getPostComments(@Path("id") id: String): Single<Comment>
+    fun getPostComments(@Path("id") id: String): Single<List<Comment>>
 }

@@ -18,8 +18,8 @@ class PostViewModel @ViewModelInject constructor(
 ) : ViewModel() {
     private var _postsAndPhotos = MutableLiveData<PostAndImages>()
     val postsAndPhotos: LiveData<PostAndImages> get() = _postsAndPhotos
-    val networkError = MutableLiveData<String>()
     val errors = MutableLiveData<String?>()
+    val networkError = MutableLiveData<String>()
 
     var _showProgressBar = MutableLiveData(true)
     val showProgressBar: LiveData<Boolean>
@@ -33,9 +33,14 @@ class PostViewModel @ViewModelInject constructor(
                     getPhotos(posts)
                 },
                 onError = { error ->
-                    Log.d("TAG", "getPosts: "+error.statusCode)
-                    errors.value = error.message ?: ""
-                    _showProgressBar.value = false
+                    if(error.statusCode == 500){
+                        networkError.value = error.message ?: ""
+                        _showProgressBar.value = false
+                    }else{
+                        errors.value = error.message ?: ""
+                        _showProgressBar.value = false
+                    }
+
                 },
                 onFinish = {}
             )
@@ -45,7 +50,7 @@ class PostViewModel @ViewModelInject constructor(
         }
     }
 
-    private fun getPhotos(posts: Post) {
+    private fun getPhotos(posts: List<Post>) {
         if (NetworkConnection.hasNetwork()) {
             _showProgressBar.value = true
             getPhotosUseCase.execute(
@@ -54,13 +59,18 @@ class PostViewModel @ViewModelInject constructor(
                     _showProgressBar.value = false
                 },
                 onError = { error ->
-                    errors.value = error.message ?: ""
-                    _showProgressBar.value = false
+                    if(error.statusCode == 500){
+                        networkError.value = error.message ?: ""
+                        _showProgressBar.value = false
+                    }else{
+                        errors.value = error.message ?: ""
+                        _showProgressBar.value = false
+                    }
                 },
                 onFinish = {}
             )
         } else {
-            networkError.value = "Network error please try again"
+            networkError.value = "Please check your network connection"
             _showProgressBar.value = false
         }
     }

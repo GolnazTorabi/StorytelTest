@@ -10,15 +10,15 @@ import javax.inject.Inject
 
 class PostRepositoryImpl @Inject constructor(private val postApiImpl: PostApiImpl) :
     PostRepository {
-    override fun gePost(): Single<Post> {
+    override fun gePost(): Single<List<Post>> {
         return postApiImpl.gePost()
     }
 
-    override fun getPhoto(): Single<Photo> {
+    override fun getPhoto(): Single<List<Photo>> {
         return postApiImpl.getPhoto()
     }
 
-    override fun getPostComments(id: String): Single<Comment> {
+    override fun getPostComments(id: String): Single<List<Comment>> {
         return postApiImpl.getPostComments(id)
     }
 }

@@ -47,6 +47,8 @@ class PostFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         getData()
         initAdapter()
+        observePostsData()
+        observePostsError()
     }
 
     private fun initAdapter() {
@@ -65,8 +67,6 @@ class PostFragment : Fragment() {
 
     private fun getData() {
         viewModel.getPosts()
-        observePostsData()
-        observePostsError()
     }
 
     private fun observePostsData() {
@@ -81,8 +81,7 @@ class PostFragment : Fragment() {
             //viewModel.getPosts()
         })
         viewModel.networkError.observe(requireActivity(), Observer { error ->
-            if (error.isNullOrEmpty())
-                showDialog(error)
+               showDialog(error)
         })
     }
 

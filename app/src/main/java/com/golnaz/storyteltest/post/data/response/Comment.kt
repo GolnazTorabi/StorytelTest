@@ -1,19 +1,12 @@
 package com.golnaz.storyteltest.post.data.response
 
-import com.fasterxml.jackson.annotation.JsonProperty
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
+
 @Parcelize
 data class Comment(
-
-	@field:SerializedName("Comment")
-	val comment: List<CommentItem>? = null
-) : Parcelable
-
-@Parcelize
-data class CommentItem(
 
 	@field:SerializedName("name")
 	val name: String? = null,

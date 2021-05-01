@@ -9,8 +9,12 @@ import com.golnaz.storyteltest.R
 @BindingAdapter(value = ["imageUrl", "placeHolder"], requireAll = false)
 fun ImageView.LoadImageUrl(imageUrl: String?, placeholder: Drawable) {
     Glide.with(this)
-        .load(imageUrl)
+        .load(imageUrl?.trim())
         .placeholder(placeholder)
-        .error(R.drawable.ic_launcher_background)
+        .thumbnail(
+            Glide.with(this)
+                .load(placeholder)
+        )
+        .error(placeholder)
         .into(this)
 }

@@ -12,14 +12,18 @@
         tools:layout="@layout/comment_fragment">
         <argument
             android:name="comment"
-            app:argType="com.golnaz.storyteltest.post.data.response.PostItem" />
+            app:argType="com.golnaz.storyteltest.post.domain.model.PostAndImageArg" />
     </fragment>
     <fragment
         android:id="@+id/postFragment"
         android:name="com.golnaz.storyteltest.post.view.post.PostFragment"
-        android:label="PostFragment" >
+        android:label="PostFragment">
         <action
             android:id="@+id/action_postFragment_to_commentFragment"
-            app:destination="@id/commentFragment" />
+            app:destination="@id/commentFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_left" />
     </fragment>
 </navigation>

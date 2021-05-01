@@ -1,18 +1,12 @@
 package com.golnaz.storyteltest.post.data.response
 
-import com.fasterxml.jackson.annotation.JsonProperty
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
-@Parcelize
-data class Photo(
-	@field:SerializedName("Photos")
-	val photos: List<PhotosItem>? = null
-) : Parcelable
 
 @Parcelize
-data class PhotosItem(
+data class Photo(
 
 	@field:SerializedName("albumId")
 	val albumId: Int? = null,

@@ -7,17 +7,17 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 class PostApiImpl @Inject constructor(private val postApi: PostApi) {
-    fun gePost(): Single<Post> {
+    fun gePost(): Single<List<Post>> {
         return postApi.gePost()
     }
 
 
-    fun getPhoto(): Single<Photo> {
+    fun getPhoto(): Single<List<Photo>> {
         return postApi.getPhoto()
     }
 
 
-    fun getPostComments(id: String): Single<Comment> {
+    fun getPostComments(id: String): Single<List<Comment>> {
         return postApi.getPostComments(id)
     }
 }

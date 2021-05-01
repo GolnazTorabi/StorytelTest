@@ -7,8 +7,8 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 class GetPhotosUseCase @Inject constructor(private val postRepository: PostRepository) :
-    DisposableSingleUseCaseNotParams<Photo>() {
-    override fun buildUseCaseSingle(): Single<Photo> {
+    DisposableSingleUseCaseNotParams<List<Photo>>() {
+    override fun buildUseCaseSingle(): Single<List<Photo>> {
         return postRepository.getPhoto()
     }
 }

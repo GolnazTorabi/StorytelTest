@@ -7,8 +7,8 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 class GetCommentsUseCase @Inject constructor(private val postRepository: PostRepository) :
-    DisposableSingleUseCase<Comment, String>() {
-    override fun buildUseCaseSingle(params: String): Single<Comment> {
+    DisposableSingleUseCase<List<Comment>, String>() {
+    override fun buildUseCaseSingle(params: String): Single<List<Comment>> {
         return postRepository.getPostComments(params)
     }
 }

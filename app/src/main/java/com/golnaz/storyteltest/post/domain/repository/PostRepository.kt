@@ -6,7 +6,7 @@ import com.golnaz.storyteltest.post.data.response.Post
 import io.reactivex.Single
 
 interface PostRepository {
-    fun gePost(): Single<Post>
-    fun getPhoto(): Single<Photo>
-    fun getPostComments(id: String): Single<Comment>
+    fun gePost(): Single<List<Post>>
+    fun getPhoto(): Single<List<Photo>>
+    fun getPostComments(id: String): Single<List<Comment>>
 }
