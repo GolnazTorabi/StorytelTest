@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/postFragment">
+
+    <fragment
+        android:id="@+id/commentFragment"
+        android:name="com.golnaz.storyteltest.post.view.comment.CommentFragment"
+        android:label="comment_fragment"
+        tools:layout="@layout/comment_fragment">
+        <argument
+            android:name="comment"
+            app:argType="com.golnaz.storyteltest.post.data.response.PostItem" />
+    </fragment>
+    <fragment
+        android:id="@+id/postFragment"
+        android:name="com.golnaz.storyteltest.post.view.post.PostFragment"
+        android:label="PostFragment" >
+        <action
+            android:id="@+id/action_postFragment_to_commentFragment"
+            app:destination="@id/commentFragment" />
+    </fragment>
+</navigation>
