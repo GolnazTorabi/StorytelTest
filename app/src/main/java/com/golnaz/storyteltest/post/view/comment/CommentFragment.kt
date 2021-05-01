@@ -36,7 +36,7 @@ class CommentFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = DataBindingUtil.inflate(inflater, R.layout.comment_fragment, container, false)
         _binding?.viewModel = viewModel
         _binding?.lifecycleOwner = this

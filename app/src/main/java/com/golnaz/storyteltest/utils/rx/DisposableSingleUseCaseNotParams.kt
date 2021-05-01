@@ -35,7 +35,7 @@ abstract class DisposableSingleUseCaseNotParams<T> {
                             BaseResponse(
                                 500,
                                 false,
-                                "خطایی رخ داده است، لطفا دوباره تلاش کنید"
+                                " An error occurred. Please try again"
                             )
                         )
                     }

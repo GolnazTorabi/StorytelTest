@@ -18,7 +18,7 @@ class CommentViewModel @ViewModelInject constructor(
     val errors = MutableLiveData<String?>()
 
 
-    var _showProgressBar = MutableLiveData(true)
+    private var _showProgressBar = MutableLiveData(true)
     val showProgressBar: LiveData<Boolean>
         get() = _showProgressBar
 

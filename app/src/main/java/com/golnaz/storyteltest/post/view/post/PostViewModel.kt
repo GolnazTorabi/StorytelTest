@@ -1,6 +1,5 @@
 package com.golnaz.storyteltest.post.view.post
 
-import android.util.Log
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,7 +9,6 @@ import com.golnaz.storyteltest.post.domain.model.PostAndImages
 import com.golnaz.storyteltest.post.domain.usecases.GetPhotosUseCase
 import com.golnaz.storyteltest.post.domain.usecases.GetPostsUseCase
 import com.golnaz.storyteltest.utils.network.NetworkConnection
-import javax.inject.Inject
 
 class PostViewModel @ViewModelInject constructor(
     private val getPostsUseCase: GetPostsUseCase,
@@ -21,7 +19,7 @@ class PostViewModel @ViewModelInject constructor(
     val errors = MutableLiveData<String?>()
     val networkError = MutableLiveData<String>()
 
-    var _showProgressBar = MutableLiveData(true)
+    private var _showProgressBar = MutableLiveData(true)
     val showProgressBar: LiveData<Boolean>
         get() = _showProgressBar
 
@@ -33,10 +31,10 @@ class PostViewModel @ViewModelInject constructor(
                     getPhotos(posts)
                 },
                 onError = { error ->
-                    if(error.statusCode == 500){
+                    if (error.statusCode == 500) {
                         networkError.value = error.message ?: ""
                         _showProgressBar.value = false
-                    }else{
+                    } else {
                         errors.value = error.message ?: ""
                         _showProgressBar.value = false
                     }
@@ -59,10 +57,10 @@ class PostViewModel @ViewModelInject constructor(
                     _showProgressBar.value = false
                 },
                 onError = { error ->
-                    if(error.statusCode == 500){
+                    if (error.statusCode == 500) {
                         networkError.value = error.message ?: ""
                         _showProgressBar.value = false
-                    }else{
+                    } else {
                         errors.value = error.message ?: ""
                         _showProgressBar.value = false
                     }

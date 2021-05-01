@@ -102,7 +102,7 @@ class RetrofitException : RuntimeException() {
     @Throws(IOException::class)
     fun getErrorBodyAs(type: Class<BaseResponse>): BaseResponse {
         if (getKind() == Kind.TIMEOUT || getKind() == Kind.NETWORK) {
-            return BaseResponse(500, false, "please try later")
+            return BaseResponse(500, false, " An error occurred. Please try again")
         }
         if (response == null || response!!.errorBody() == null) {
             return BaseResponse(400, false, message)
