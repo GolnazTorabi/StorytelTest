@@ -9,6 +9,6 @@ import javax.inject.Inject
 class GetPostsUseCase @Inject constructor(private val postRepository: PostRepository) :
     DisposableSingleUseCaseNotParams<List<Post>>() {
     override fun buildUseCaseSingle(): Single<List<Post>> {
-        return postRepository.gePost()
+        return postRepository.getPost()
     }
 }

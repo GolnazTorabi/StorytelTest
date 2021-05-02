@@ -26,7 +26,7 @@ class CommentViewModel @ViewModelInject constructor(
 
     fun getComments(id: String) {
         _showProgressBar.value = true
-        if (NetworkConnection.hasNetwork()) {
+       /* if (NetworkConnection.hasNetwork()) {*/
             getCommentsUseCase.execute(
                 onSuccess = { commentList ->
                     _comments.value = commentList.subList(0, 3)
@@ -44,10 +44,10 @@ class CommentViewModel @ViewModelInject constructor(
                 onFinish = {},
                 params = id
             )
-        } else {
+       /* } else {
             _showProgressBar.value = false
             networkError.value = "Please check your network connection"
-        }
+        }*/
     }
 
 }

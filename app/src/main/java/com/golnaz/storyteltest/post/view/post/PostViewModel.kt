@@ -24,7 +24,7 @@ class PostViewModel @ViewModelInject constructor(
         get() = _showProgressBar
 
     fun getPosts() {
-        if (NetworkConnection.hasNetwork()) {
+     /*   if (NetworkConnection.hasNetwork()) {*/
             _showProgressBar.value = true
             getPostsUseCase.execute(
                 onSuccess = { posts ->
@@ -42,14 +42,14 @@ class PostViewModel @ViewModelInject constructor(
                 },
                 onFinish = {}
             )
-        } else {
+        /*}*//* else {
             _showProgressBar.value = false
             networkError.value = "Network error please try again"
-        }
+        }*/
     }
 
-    private fun getPhotos(posts: List<Post>) {
-        if (NetworkConnection.hasNetwork()) {
+    fun getPhotos(posts: List<Post>) {
+      /*  if (NetworkConnection.hasNetwork()) {*/
             _showProgressBar.value = true
             getPhotosUseCase.execute(
                 onSuccess = { photos ->
@@ -67,9 +67,9 @@ class PostViewModel @ViewModelInject constructor(
                 },
                 onFinish = {}
             )
-        } else {
+        /*}*/ /*else {
             networkError.value = "Please check your network connection"
             _showProgressBar.value = false
-        }
+        }*/
     }
 }

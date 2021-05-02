@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 class PostRepositoryImpl @Inject constructor(private val postApiImpl: PostApiImpl) :
     PostRepository {
-    override fun gePost(): Single<List<Post>> {
+    override fun getPost(): Single<List<Post>> {
         return postApiImpl.gePost()
     }
 
