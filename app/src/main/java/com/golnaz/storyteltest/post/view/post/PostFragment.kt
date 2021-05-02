@@ -59,8 +59,10 @@ class PostFragment : Fragment() {
 
         subscribeComment = adapter.clickEventComment
             .subscribe { post ->
-                val action = PostFragmentDirections.actionPostFragmentToCommentFragment(post)
-                findNavController().navigate(action)
+                if (findNavController().currentDestination?.id == R.id.postFragment) {
+                    val action = PostFragmentDirections.actionPostFragmentToCommentFragment(post)
+                    findNavController().navigate(action)
+                }
             }
     }
 
@@ -81,7 +83,7 @@ class PostFragment : Fragment() {
             //viewModel.getPosts()
         })
         viewModel.networkError.observe(requireActivity(), Observer { error ->
-               showDialog(error)
+            showDialog(error)
         })
     }
 
