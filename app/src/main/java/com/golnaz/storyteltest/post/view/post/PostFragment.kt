@@ -103,4 +103,11 @@ class PostFragment : Fragment() {
         dialog.show()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        binding.recyclerView.adapter = null
+        _binding = null
+        subscribeComment?.dispose()
+    }
+
 }

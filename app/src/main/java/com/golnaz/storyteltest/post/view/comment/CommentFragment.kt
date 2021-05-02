@@ -98,4 +98,10 @@ class CommentFragment : Fragment() {
         dialog.show()
     }
 
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding.commentList.adapter = null
+        _binding = null
+    }
 }
