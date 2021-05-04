@@ -65,4 +65,14 @@ class CommentViewModelTest {
         assertTrue(commentViewModel.errors.value == null)
         assertTrue(commentViewModel.networkError.value == null)
     }
+
+    @Test
+    fun `should show error because of body text changed`() {
+        commentViewModel.getComments("1")
+        commentViewModel.comments.value?.get(0)?.body = "new body"
+        assertTrue(commentViewModel.comments.value?.get(0)?.postId == 1)
+        assertTrue(commentViewModel.errors.value == null)
+        assertTrue(commentViewModel.networkError.value == null)
+        assertTrue(commentViewModel.comments.value?.get(0)?.body == "body")
+    }
 }

@@ -18,7 +18,7 @@ data class Comment(
 	val id: Int? = null,
 
 	@field:SerializedName("body")
-	val body: String? = null,
+	var body: String? = null,
 
 	@field:SerializedName("email")
 	val email: String? = null
