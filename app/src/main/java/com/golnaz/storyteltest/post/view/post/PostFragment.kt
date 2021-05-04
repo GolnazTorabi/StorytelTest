@@ -1,10 +1,12 @@
 package com.golnaz.storyteltest.post.view.post
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -43,6 +45,7 @@ class PostFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getData()
@@ -59,14 +62,13 @@ class PostFragment : Fragment() {
 
         subscribeComment = adapter.clickEventComment
             .subscribe { post ->
-                if (findNavController().currentDestination?.id == R.id.postFragment) {
-                    val action = PostFragmentDirections.actionPostFragmentToCommentFragment(post)
-                    findNavController().navigate(action)
-                }
+                val action = PostFragmentDirections.actionPostFragmentToCommentFragment(post)
+                findNavController().navigate(action)
             }
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun getData() {
         viewModel.getPosts()
     }
@@ -80,7 +82,6 @@ class PostFragment : Fragment() {
     private fun observePostsError() {
         viewModel.errors.observe(requireActivity(), Observer {
             Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
-            //viewModel.getPosts()
         })
         viewModel.networkError.observe(requireActivity(), Observer { error ->
             showDialog(error)
@@ -105,8 +106,8 @@ class PostFragment : Fragment() {
         dialog.show()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         binding.recyclerView.adapter = null
         _binding = null
         subscribeComment?.dispose()

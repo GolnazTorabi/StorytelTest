@@ -34,6 +34,7 @@ class PostViewModelTest {
     lateinit var postRepository: PostRepository
 
 
+
     @get:Rule
     var mockitoRule: MockitoRule = MockitoJUnit.rule()
 
