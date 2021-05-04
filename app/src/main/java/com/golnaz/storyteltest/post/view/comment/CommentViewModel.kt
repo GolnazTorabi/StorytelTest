@@ -27,7 +27,11 @@ class CommentViewModel @ViewModelInject constructor(
         _showProgressBar.value = true
         getCommentsUseCase.execute(
             onSuccess = { commentList ->
-                _comments.value = commentList.subList(0, 3)
+                if (commentList.size >= 3) {
+                    _comments.value = commentList.subList(0, 3)
+                } else {
+                    _comments.value = commentList
+                }
                 _showProgressBar.value = false
             },
             onError = { error ->

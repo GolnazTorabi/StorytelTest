@@ -71,6 +71,17 @@ class PostViewModelTest {
         assertEquals(postViewModel.postsAndPhotos.value?.posts, post)
         assertEquals(postViewModel.postsAndPhotos.value?.photos, photo)
         assertTrue(postViewModel.showProgressBar.value == false)
+
+        assertTrue(postViewModel.errors.value == null)
+
+    }
+
+    @Test
+    fun `should getError`(){
+        postViewModel.getPosts()
+        postViewModel.postsAndPhotos.value?.posts?.let { postViewModel.getPhotos(it) }
+        assertTrue(postViewModel.errors.value == null)
+        assertTrue(postViewModel.networkError.value == null)
     }
 
 }
